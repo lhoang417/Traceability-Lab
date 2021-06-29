@@ -14,11 +14,22 @@ app.use(express.json());
 
 app.get('/', (req,res)=>{
     rollbar.log("Hello world!");
+    rollbar.error('User tried to access incorrect path')
+    
+    
     res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
 app.get('/birds', (req,res)=>{
     return res.error('this is not real')
+})
+
+app.get('/mordor', (req,res)=>{
+    rollbar.critical('you will burn')
+})
+
+app.get('/rohan', (req,res)=>{
+    rollbar.warning('Do not go thi path')
 })
 
 
