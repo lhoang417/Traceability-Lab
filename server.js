@@ -25,11 +25,11 @@ app.get('/birds', (req,res)=>{
 })
 
 app.get('/mordor', (req,res)=>{
-    rollbar.critical('you will burn')
+    rollbar.critical('One does not simply walk into Mordor')
 })
 
 app.get('/rohan', (req,res)=>{
-    rollbar.warning('Do not go thi path')
+    rollbar.warning('Tell me your name horsemaster, and Ill tell you mine')
 })
 
 
