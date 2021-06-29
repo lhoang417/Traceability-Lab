@@ -5,6 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <style>
+        body{
+            background-image: url('https://wallpapercave.com/wp/PQVpQko.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        aside {
+            padding: 10px;
+            background-color: #C6B692;
+            color: darkslategrey;
+            border-radius: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        h1{
+            font-size: 100px;
+            font-weight: 500;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        section{
+            font-size: 40px;
+            font-weight: 200;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
     <title>Middle Earth</title>
 </head>
 <body><center>
@@ -37,10 +64,10 @@
 
                     const notif = document.createElement('aside')
                     notif.innerHTML = `<p>${err.response.data}</p>
-                    <button class="close">close</button>`
+                    <button id="close">close</button>`
                     document.body.appendChild(notif)
 
-                    document.querySelector('.close').forEach(btn => {
+                    document.querySelector('#close').forEach(btn => {
                         btn.addEventListener('click', (e) => {
                             e.target.parentNode.remove()
                         })
@@ -48,7 +75,7 @@
                 })
         }
 
-        addForm.addEventListener('submit', submitHandler)
+        newForm.addEventListener('submit', submitHandler)
     </script>
 </body>
 </html>
