@@ -14,6 +14,7 @@ app.use(express.json());
 let characters = []
 app.get('/', (req,res)=>{
     rollbar.log("Hello world!");
+    rollbar.info('html file served successfully');
     rollbar.error('User tried to access incorrect path')
     
     
@@ -32,27 +33,28 @@ app.get('/rohan', (req,res)=>{
     rollbar.warning('Give me your name horsemaster, and I shall give you mine')
 })
 
-app.post('/api/characters', (req, res) => {
+app.post('/api/character', (req, res) => {
     let {name} = req.body
     name = name.trim()
 
     const index = characters.findIndex((character) => { // check if character name exists already
-        character === name
+        return character === name
     })
     console.log(index)
+
     try { // using a "try catch" block will handle any generic 500 errors (not necessary, but a good addition)
         if (index === -1 && name !== '') {
             // we'll send responses to the user based upon whether or not they gave us a valid user to add
             // also we'll send information to rollbar so we can keep track of the activity that's happening
             characters.push(name)
-            rollbar.log("There's some good in the world", {author: 'Linh', type: 'manual'})
+            rollbar.log('There is some good in the world', {author: 'Linh', type: 'manual'})
             res.status(200).send(characters)
         } else if (name === '') {
-            rollbar.error('You must be an orc!')
-            res.status(400).send("Don't be hasty!")
+            rollbar.error('Dont be hasty')
+            res.status(400).send('Are you an orc?')
         } else {
-            rollbar.error('You cannot wield it!')
-            res.status(400).send('None of us can')
+            rollbar.error('YOU SHALL NOT PASS')
+            res.status(400).send('YOU SHALL NOT PASS')
         }
     } catch (err) {
         rollbar.error(err)

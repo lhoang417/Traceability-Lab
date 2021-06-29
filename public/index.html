@@ -50,7 +50,7 @@
 
         function submitHandler(e) {
             e.preventDefault()
-            axios.post('/api/characters', {name: newName.value})
+            axios.post('/api/character', {name: newName.value})
                 .then(res => {
                     dataSection.innerHTML = ''
                     newName.value = ''
@@ -67,7 +67,7 @@
                     <button id="close">close</button>`
                     document.body.appendChild(notif)
 
-                    document.querySelector('#close').forEach(btn => {
+                    document.querySelectorAll('#close').forEach(btn => {
                         btn.addEventListener('click', (e) => {
                             e.target.parentNode.remove()
                         })
